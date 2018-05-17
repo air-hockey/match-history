@@ -1,0 +1,14 @@
+# import Match from './generated/prisma.graphql'
+# import Player from './generated/prisma.graphql'
+
+type Query {
+  matches(winner: String): [Match!]!
+  player(id: ID!): Player
+  players: [Player!]!
+}
+
+type Mutation {
+  createMatch(winnerId: ID!, loserId: ID!): Match
+  deleteMatch(id: ID!): Match
+  createPlayer(name: String!): Player!
+}
