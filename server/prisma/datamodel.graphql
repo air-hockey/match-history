@@ -1,0 +1,11 @@
+type Player {
+  id: ID! @unique
+  name: String!
+}
+
+type Match {
+  id: ID! @unique
+  date: DateTime!
+  winner: Player! @relation(name: "MatchWinner")
+  loser: Player! @relation(name: "MatchLoser")
+}
