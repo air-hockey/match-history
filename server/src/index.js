@@ -13,7 +13,11 @@ const resolvers = {
     player: (_, { id }, context, info) => context.prisma.query.player({
       where: { id },
 		}, info),
-		players: (_, args, context, info) => context.prisma.query.players({}, info)
+		allPlayers: (_, { first, skip }, context, info) => context.prisma.query.players({
+      first,
+      skip
+    }, info),
+    _allPlayersMeta: (_, args, context, info) => context.prisma.query.playersConnection(null, info)
   },
   Mutation: {
     createMatch: (_, { winnerId, loserId }, context, info) => context.prisma.mutation.createMatch({

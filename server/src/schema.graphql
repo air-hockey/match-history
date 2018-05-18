@@ -4,7 +4,8 @@
 type Query {
   matches(winner: String): [Match!]!
   player(id: ID!): Player
-  players: [Player!]!
+  allPlayers(first: Int, skip: Int): [Player!]!
+  _allPlayersMeta: PlayerConnection
 }
 
 type Mutation {
