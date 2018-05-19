@@ -10,7 +10,9 @@
     "server": "node ./server/src",
     "dev": "next",
     "build": "next build",
-    "start": "yarn run server && next start"
+    "start": "yarn run server && next start",
+    "prettier": "prettier --write \"**/*.{js,md,graphql,json}\"",
+    "precommit": "precise-commits"
   },
   "dependencies": {
     "apollo-boost": "^0.1.6",
@@ -23,5 +25,14 @@
     "react": "^16.3.2",
     "react-apollo": "^2.1.4",
     "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "precise-commits": "^1.0.2",
+    "prettier": "1.12.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
