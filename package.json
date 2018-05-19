@@ -6,6 +6,7 @@
   "author": "Mark Brouch <mark.brouch@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "db:up": "cd server/prisma && docker-compose up",
     "server": "node ./server/src",
     "dev": "next",
     "build": "next build",
