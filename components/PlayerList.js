@@ -28,8 +28,8 @@ function PlayerList({
             {loading ? 'Loading...' : 'Show More'}{' '}
           </button>
         ) : (
-            ''
-          )}
+          ''
+        )}
         <style jsx>{`
           section {
             padding-bottom: 20px;
@@ -99,7 +99,7 @@ export default graphql(allPlayers, {
     variables: allPlayersQueryVars
   },
   props: ({ data }) => {
-    return ({
+    return {
       data,
       loadMorePlayers: () => {
         return data.fetchMore({
@@ -112,11 +112,14 @@ export default graphql(allPlayers, {
             }
             return Object.assign({}, previousResult, {
               // Append the new players results to the old one
-              allPlayers: [...previousResult.allPlayers, ...fetchMoreResult.allPlayers]
+              allPlayers: [
+                ...previousResult.allPlayers,
+                ...fetchMoreResult.allPlayers
+              ]
             })
           }
         })
       }
-    })
+    }
   }
 })(PlayerList)
