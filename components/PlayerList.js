@@ -9,7 +9,7 @@ function PlayerList({
 }) {
   if (error) return <div>Error loading players.</div>
   if (allPlayers && allPlayers.length) {
-    const areMorePlayers = allPlayers.length < _allPlayersMeta.aggregate.count
+    const areMorePlayers = allPlayers.length < _allPlayersMeta.count
     return (
       <section>
         <ul>
@@ -81,9 +81,7 @@ export const allPlayers = gql`
       name
     }
     _allPlayersMeta {
-      aggregate {
-        count
-      }
+      count
     }
   }
 `
