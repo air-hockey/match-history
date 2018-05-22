@@ -1,5 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
+const { AllPlayersMeta } = require('./types/all-players-meta')
 
 const resolvers = {
   Query: {
@@ -29,9 +30,9 @@ const resolvers = {
         },
         info
       ),
-    _allPlayersMeta: (_, args, context, info) =>
-      context.prisma.query.playersConnection(null, info)
+    _allPlayersMeta: () => ({})
   },
+  AllPlayersMeta,
   Mutation: {
     createMatch: (_, { winnerId, loserId }, context, info) =>
       context.prisma.mutation.createMatch(
@@ -72,6 +73,9 @@ const resolvers = {
 const server = new GraphQLServer({
   typeDefs: 'server/src/schema.graphql',
   resolvers,
+  resolverValidationOptions: {
+    requireResolversForResolveType: false
+  },
   context: req => ({
     ...req,
     prisma: new Prisma({

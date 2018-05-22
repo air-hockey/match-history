@@ -1,11 +1,15 @@
 # import Match from './generated/prisma.graphql'
 # import Player from './generated/prisma.graphql'
 
+type AllPlayersMeta {
+  count: Int!
+}
+
 type Query {
   matches(winner: String): [Match!]!
   player(id: ID!): Player
   allPlayers(first: Int, skip: Int): [Player!]!
-  _allPlayersMeta: PlayerConnection
+  _allPlayersMeta: AllPlayersMeta!
 }
 
 type Mutation {
