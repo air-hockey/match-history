@@ -6,11 +6,11 @@
   "author": "Mark Brouch <mark.brouch@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "db:up": "cd server/prisma && docker-compose up",
+    "db:up": "cd server/database && docker-compose up",
     "server": "node ./server/src",
     "dev": "next",
     "build": "next build",
-    "start": "yarn run server && next start",
+    "start": "next start",
     "prettier": "prettier --write \"**/*.{js,md,graphql,json}\"",
     "precommit": "precise-commits"
   },
