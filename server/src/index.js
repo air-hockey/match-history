@@ -5,7 +5,7 @@ const { AllPlayersMeta } = require('./types/all-players-meta')
 const resolvers = {
   Query: {
     matches: (_, { winner }, context, info) =>
-      context.prisma.query.matches(
+      context.db.query.matches(
         {
           where: {
             winner: {
@@ -16,14 +16,14 @@ const resolvers = {
         info
       ),
     player: (_, { id }, context, info) =>
-      context.prisma.query.player(
+      context.db.query.player(
         {
           where: { id }
         },
         info
       ),
     allPlayers: (_, { first, skip }, context, info) =>
-      context.prisma.query.players(
+      context.db.query.players(
         {
           first,
           skip
@@ -35,7 +35,7 @@ const resolvers = {
   AllPlayersMeta,
   Mutation: {
     createMatch: (_, { winnerId, loserId }, context, info) =>
-      context.prisma.mutation.createMatch(
+      context.db.mutation.createMatch(
         {
           data: {
             date: new Date(),
@@ -54,14 +54,14 @@ const resolvers = {
         info
       ),
     deleteMatch: (_, { id }, context, info) =>
-      context.prisma.mutation.deleteMatch(
+      context.db.mutation.deleteMatch(
         {
           where: { id }
         },
         info
       ),
     createPlayer: (_, { name }, context, info) =>
-      context.prisma.mutation.createPlayer(
+      context.db.mutation.createPlayer(
         {
           data: { name }
         },
@@ -78,7 +78,7 @@ const server = new GraphQLServer({
   },
   context: req => ({
     ...req,
-    prisma: new Prisma({
+    db: new Prisma({
       typeDefs: 'server/src/generated/prisma.graphql',
       endpoint: 'http://localhost:4466'
     })

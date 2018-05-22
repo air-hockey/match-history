@@ -1,6 +1,6 @@
 const AllPlayersMeta = {
   async count(parent, args, ctx, info) {
-    const aggregations = await ctx.prisma.query.playersConnection(
+    const aggregations = await ctx.db.query.playersConnection(
       {},
       ` { aggregate { count } } `
     )
