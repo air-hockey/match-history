@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "db:up": "cd server/database && docker-compose up",
-    "server": "node ./server/src",
+    "server": "cd server/database && prisma deploy && cd ../.. && node ./server/src",
     "dev": "next",
     "build": "next build",
     "start": "next start",
