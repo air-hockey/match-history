@@ -12,7 +12,7 @@ const mocks = {
     count: casual.integer(10, 50)
   }),
   Query: () => ({
-    allPlayers: () => new MockList([10, 50]),
+    allPlayers: (root, { first, skip }) => new MockList(first || [10, 50]),
     matches: () => new MockList([10, 50])
   })
 }
