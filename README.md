@@ -20,7 +20,11 @@
     ```bash
     yarn run db:up
     ```
-2.  Start the application:
+2.  Start the server:
+    ```bash
+    yarn run server
+    ```
+3.  Start the application:
     ```bash
     yarn start
     ```
