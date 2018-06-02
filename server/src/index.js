@@ -1,6 +1,7 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
 const { AllPlayersMeta } = require('./types/all-players-meta')
+const mocks = require('./mocks')
 
 const resolvers = {
   Query: {
@@ -72,6 +73,7 @@ const resolvers = {
 
 const server = new GraphQLServer({
   typeDefs: 'server/src/schema.graphql',
+  mocks: process.env.MOCKS && mocks,
   resolvers,
   resolverValidationOptions: {
     requireResolversForResolveType: false
