@@ -72,6 +72,7 @@ const resolvers = {
 
 const server = new GraphQLServer({
   typeDefs: 'server/src/schema.graphql',
+  mocks: process.env.MOCKS && require('./mocks'),
   resolvers,
   resolverValidationOptions: {
     requireResolversForResolveType: false

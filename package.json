@@ -8,6 +8,7 @@
   "scripts": {
     "db:up": "cd server/database && docker-compose up",
     "server": "cd server/database && prisma deploy && cd ../.. && node ./server/src",
+    "server:dev": "MOCKS=true node ./server/src",
     "dev": "next",
     "build": "next build",
     "start": "next start",
@@ -27,6 +28,8 @@
     "react-dom": "^16.3.2"
   },
   "devDependencies": {
+    "casual": "^1.5.19",
+    "cuid": "^2.1.1",
     "husky": "^0.14.3",
     "precise-commits": "^1.0.2",
     "prettier": "1.12.1"

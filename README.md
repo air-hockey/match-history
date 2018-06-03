@@ -31,6 +31,10 @@
 
 ## Development
 
+When developing, you can either develop with persistent data from your local database, or with mocked data.
+
+### Using local database
+
 1.  Start the database:
     ```bash
     yarn run db:up
@@ -43,3 +47,18 @@
     ```bash
     yarn run dev
     ```
+
+### Using mocked data
+
+1.  Start the server in dev mode:
+    ```bash
+    yarn run server:dev
+    ```
+2.  Start the client in dev mode:
+    ```bash
+    yarn run dev
+    ```
+
+## Mocking data
+
+It may be helpful to mock the backend while developing on the frontend. To do this, add to the `mocks.js` file in `server/src/mocks.js`. You can use [`casual`](https://github.com/boo1ean/casual) to help build user-friendly mocks.
