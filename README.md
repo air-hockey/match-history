@@ -20,11 +20,7 @@
     ```bash
     yarn run db:up
     ```
-2.  Start the server:
-    ```bash
-    yarn run server
-    ```
-3.  Start the application:
+2.  Start the application:
     ```bash
     yarn start
     ```
@@ -39,24 +35,16 @@ When developing, you can either develop with persistent data from your local dat
     ```bash
     yarn run db:up
     ```
-2.  Start the server:
-    ```bash
-    yarn run server
-    ```
-3.  Start the client in dev mode:
+2.  Start the application in dev mode:
     ```bash
     yarn run dev
     ```
 
 ### Using mocked data
 
-1.  Start the server in dev mode:
+1.  Start the application in dev mock mode:
     ```bash
-    yarn run server:dev
-    ```
-2.  Start the client in dev mode:
-    ```bash
-    yarn run dev
+    yarn run dev:mock
     ```
 
 ## Mocking data
