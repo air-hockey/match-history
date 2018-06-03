@@ -1,4 +1,6 @@
 const next = require('next')
+const compression = require('compression')
+
 const server = require('./server/src')
 
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -7,6 +9,8 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
+  server.express.use(compression())
+
   server.express.get('*', (req, res, next) => {
     if (req.path.match(/^\/(playground|graphql|subscriptions)((?!.)|\/).*/)) {
       next()

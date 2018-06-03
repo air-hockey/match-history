@@ -10,13 +10,14 @@
     "prisma:deploy": "cd server/database && prisma deploy",
     "dev": "yarn run prisma:deploy && node index.js",
     "dev:mock": "MOCKS=true node index.js",
-    "build": "next build",
-    "start": "NODE_ENV=production yarn run prisma:deploy && node index.js",
+    "build": "NODE_ENV=production next build",
+    "start": "yarn run prisma:deploy && NODE_ENV=production node index.js",
     "prettier": "prettier --write \"**/*.{js,md,graphql,json}\"",
     "precommit": "precise-commits"
   },
   "dependencies": {
     "apollo-boost": "^0.1.6",
+    "compression": "^1.7.2",
     "graphql-tag": "^2.9.2",
     "graphql-yoga": "^1.13.1",
     "isomorphic-unfetch": "^2.0.0",
