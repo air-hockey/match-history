@@ -7,11 +7,11 @@
   "license": "MIT",
   "scripts": {
     "db:up": "cd server/database && docker-compose up",
-    "server": "cd server/database && prisma deploy && cd ../.. && node ./server/src",
-    "server:dev": "MOCKS=true node ./server/src",
-    "dev": "next",
+    "prisma:deploy": "cd server/database && prisma deploy",
+    "dev": "yarn run prisma:deploy && node index.js",
+    "dev:mock": "MOCKS=true node index.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production yarn run prisma:deploy && node index.js",
     "prettier": "prettier --write \"**/*.{js,md,graphql,json}\"",
     "precommit": "precise-commits"
   },
