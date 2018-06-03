@@ -8,7 +8,7 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   server.express.get('*', (req, res, next) => {
-    if (req.path.match(/^\/playground|graphql|subscriptions\/?.*/)) {
+    if (req.path.match(/^\/(playground|graphql|subscriptions)((?!.)|\/).*/)) {
       next()
     } else {
       return handle(req, res)
