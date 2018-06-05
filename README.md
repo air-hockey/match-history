@@ -14,13 +14,28 @@
     yarn
     ```
 
+### First time setup
+
+1.  Start the database docker container (may take awhile on first run):
+    ```bash
+    yarn run db
+    ```
+2.  Deploy prisma to the database:
+    ```bash
+    yarn run prisma:deploy
+    ```
+
 ## Run
 
-1.  Start the database (this might take awhile on first run):
+1.  Start the database:
     ```bash
-    yarn run db:up
+    yarn run db
     ```
-2.  Start the application:
+2.  Build the application:
+    ```bash
+    yarn run build
+    ```
+3.  Start the application:
     ```bash
     yarn start
     ```
@@ -33,7 +48,7 @@ When developing, you can either develop with persistent data from your local dat
 
 1.  Start the database:
     ```bash
-    yarn run db:up
+    yarn run db
     ```
 2.  Start the application in dev mode:
     ```bash
@@ -46,6 +61,20 @@ When developing, you can either develop with persistent data from your local dat
     ```bash
     yarn run dev:mock
     ```
+
+### Debug mode
+
+You can run the server in debug mode, which will allow you to attach a remote debugger to the node process:
+
+```bash
+yarn run debug
+```
+
+or
+
+```bash
+yarn run debug:mock
+```
 
 ## Mocking data
 
