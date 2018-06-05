@@ -1,17 +1,19 @@
 {
   "name": "match-history",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:air-hockey/match-history.git",
   "author": "Mark Brouch <mark.brouch@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "db:up": "cd server/database && docker-compose up",
+    "db": "cd server/database && docker-compose up",
     "prisma:deploy": "cd server/database && prisma deploy",
-    "dev": "yarn run prisma:deploy && node index.js",
-    "dev:mock": "MOCKS=true node index.js",
-    "build": "NODE_ENV=production next build",
-    "start": "yarn run prisma:deploy && NODE_ENV=production node index.js",
+    "dev": "dotenv -- nodemon -x ts-node -e ts,graphql server",
+    "dev:mock": "dotenv -e mock.env -- nodemon -x ts-node -e ts,graphql server",
+    "debug": "dotenv -- nodemon -x 'ts-node --inspect' -e ts,graphql server",
+    "debug:mock": "dotenv -e mock.env -- nodemon -x 'ts-node --inspect' -e ts,graphql server",
+    "build": "dotenv -- rimraf dist && tsc && next build",
+    "start": "dotenv -- node dist",
     "prettier": "prettier --write \"**/*.{js,md,graphql,json}\"",
     "precommit": "precise-commits"
   },
@@ -21,8 +23,9 @@
     "graphql-tag": "^2.9.2",
     "graphql-yoga": "^1.13.1",
     "isomorphic-unfetch": "^2.0.0",
+    "jsonwebtoken": "^8.2.2",
     "next": "^6.0.3",
-    "prisma-binding": "^2.0.0",
+    "prisma-binding": "^2.0.2",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-apollo": "^2.1.4",
@@ -31,9 +34,22 @@
   "devDependencies": {
     "casual": "^1.5.19",
     "cuid": "^2.1.1",
+    "dotenv-cli": "^1.4.0",
     "husky": "^0.14.3",
+    "nodemon": "^1.17.5",
     "precise-commits": "^1.0.2",
-    "prettier": "1.12.1"
+    "prettier": "1.12.1",
+    "rimraf": "^2.6.2",
+    "ts-node": "^6.1.0",
+    "typescript": "^2.9.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "components/*",
+      "lib/*",
+      "pages/*"
+    ],
+    "delay": "2500"
   },
   "prettier": {
     "semi": false,
