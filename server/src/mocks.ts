@@ -1,8 +1,8 @@
-const { MockList } = require('graphql-yoga')
-const casual = require('casual')
-const cuid = require('cuid')
+import { MockList } from 'graphql-yoga'
+import * as casual from 'casual'
+import * as cuid from 'cuid'
 
-const mocks = {
+export const mocks = {
   ID: () => cuid(),
   DateTime: () => casual.moment,
   Player: () => ({
@@ -16,5 +16,3 @@ const mocks = {
     matches: () => new MockList([10, 50])
   })
 }
-
-module.exports = mocks
