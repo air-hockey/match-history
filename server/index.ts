@@ -12,16 +12,15 @@ const {
   PLAYGROUND_ENDPOINT
 } = process.env
 
-const dev = NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
-
 // These routes will not be handled by Next.js
 const staticRoutes = [
   PLAYGROUND_ENDPOINT,
   GRAPHQL_ENDPOINT,
   SUBSCRIPTIONS_ENDPOINT
 ]
+
+const app = next({ dev: NODE_ENV !== 'production' })
+const handle = app.getRequestHandler() // the Next.js handler
 
 app.prepare().then(() => {
   server.express.use(compression())
