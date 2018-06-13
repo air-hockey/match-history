@@ -2,12 +2,13 @@ const crypto = require('crypto')
 const fs = require('fs')
 const path = require('path')
 
-const generateToken = (bytes = 256) =>
+function generateToken(bytes = 256) {
   crypto.randomBytes(bytes).toString('base64')
+}
 
-const secretsPath = path.join(__dirname, '../now-secrets.json')
+const SECRETS_PATH = path.join(__dirname, '../now-secrets.json')
 
-fs.readFile(secretsPath, 'utf-8', (err, data = '{}') => {
+fs.readFile(SECRETS_PATH, 'utf-8', (err, data = '{}') => {
   if (err && err.code !== 'ENOENT') throw err
 
   const secrets = {
@@ -16,7 +17,7 @@ fs.readFile(secretsPath, 'utf-8', (err, data = '{}') => {
     ...JSON.parse(data)
   }
 
-  fs.writeFile(secretsPath, JSON.stringify(secrets, null, 2), 'utf-8', err => {
+  fs.writeFile(SECRETS_PATH, JSON.stringify(secrets, null, 2), 'utf-8', err => {
     if (err) throw err
   })
 })
