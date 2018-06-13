@@ -1,3 +1,4 @@
+import 'now-env'
 import * as next from 'next'
 import * as compression from 'compression'
 

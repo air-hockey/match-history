@@ -1,4 +1,3 @@
-import 'now-env'
 import { GraphQLServer } from 'graphql-yoga'
 import { Prisma } from 'prisma-binding'
 
