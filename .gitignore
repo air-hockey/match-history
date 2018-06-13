@@ -55,7 +55,7 @@ typings/
 .yarn-integrity
 
 # now-env secrets
-now-secret.json
+now-secrets.json
 
 # next.js build output
 .next
