@@ -13,6 +13,13 @@
     ```bash
     yarn
     ```
+4.  Create a `now-secrets.json` file in the root directory with the following keys:
+    ```json
+    {
+      "@prisma-secret": "supersecret",
+      "@jwt-secret": "brandon-is-actually-worse-at-air-hockey-than-mark"
+    }
+    ```
 
 ### First time setup
 
