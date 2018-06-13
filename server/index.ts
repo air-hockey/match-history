@@ -16,6 +16,13 @@ const dev = NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+// These routes will not be handled by Next.js
+const staticRoutes = [
+  PLAYGROUND_ENDPOINT,
+  GRAPHQL_ENDPOINT,
+  SUBSCRIPTIONS_ENDPOINT
+]
+
 app.prepare().then(() => {
   server.express.use(compression())
 
@@ -23,15 +30,15 @@ app.prepare().then(() => {
     if (
       req.path.match(
         new RegExp(
-          `^(${[PLAYGROUND_ENDPOINT, GRAPHQL_ENDPOINT, SUBSCRIPTIONS_ENDPOINT]
-            .filter(endpoint => endpoint)
-            .join('|')})((?!.)|\/).*`
+          `^(${staticRoutes
+            .filter(route => route) // remove undefined routes
+            .join('|')})((?!.)|\/).*` // match all subroutes
         )
       )
     ) {
-      next()
+      next() // Do not render Next.js if static route
     } else {
-      return handle(req, res)
+      return handle(req, res) // Render Next.js
     }
   })
 
