@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 function generateToken(bytes = 256) {
-  crypto.randomBytes(bytes).toString('base64')
+  return crypto.randomBytes(bytes).toString('base64')
 }
 
 const SECRETS_PATH = path.join(__dirname, '../now-secrets.json')
