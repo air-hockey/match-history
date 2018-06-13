@@ -1,0 +1,12 @@
+{
+  "env": [
+    "PRISMA_ENDPOINT",
+    "SERVER_ENDPOINT",
+    "PORT",
+    "GRAPHQL_ENDPOINT",
+    "SUBSCRIPTIONS_ENDPOINT",
+    "PLAYGROUND_ENDPOINT",
+    "PRISMA_SECRET",
+    "JWT_SECRET"
+  ]
+}
