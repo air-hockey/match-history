@@ -16,8 +16,6 @@
 
 ### First time setup
 
-_Note_ this project requires `Node 8.1` or later.
-
 1.  Start the database docker container (may take awhile on first run):
     ```bash
     yarn run db

@@ -2,6 +2,9 @@
   "name": "match-history",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.1.0 <=8.11.0"
+  },
   "repository": "git@github.com:air-hockey/match-history.git",
   "author": "Mark Brouch <mark.brouch@gmail.com>",
   "license": "MIT",
