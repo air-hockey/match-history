@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Wed May 16 2018 22:14:52 GMT-0500 (EST)
+# timestamp: Wed Jun 13 2018 23:43:27 GMT-0500 (CDT)
 
 type AggregateMatch {
   count: Int!
@@ -238,7 +238,10 @@ type PageInfo {
 
 type Player implements Node {
   id: ID!
-  name: String!
+  email: String!
+  facebookId: String!
+  firstName: String!
+  lastName: String!
 }
 
 """A connection to a list of items."""
@@ -252,7 +255,10 @@ type PlayerConnection {
 }
 
 input PlayerCreateInput {
-  name: String!
+  email: String!
+  facebookId: String!
+  firstName: String!
+  lastName: String!
 }
 
 input PlayerCreateOneInput {
@@ -272,8 +278,14 @@ type PlayerEdge {
 enum PlayerOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  email_ASC
+  email_DESC
+  facebookId_ASC
+  facebookId_DESC
+  firstName_ASC
+  firstName_DESC
+  lastName_ASC
+  lastName_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -282,7 +294,10 @@ enum PlayerOrderByInput {
 
 type PlayerPreviousValues {
   id: ID!
-  name: String!
+  email: String!
+  facebookId: String!
+  firstName: String!
+  lastName: String!
 }
 
 type PlayerSubscriptionPayload {
@@ -325,11 +340,17 @@ input PlayerSubscriptionWhereInput {
 }
 
 input PlayerUpdateDataInput {
-  name: String
+  email: String
+  facebookId: String
+  firstName: String
+  lastName: String
 }
 
 input PlayerUpdateInput {
-  name: String
+  email: String
+  facebookId: String
+  firstName: String
+  lastName: String
 }
 
 input PlayerUpdateOneInput {
@@ -394,50 +415,172 @@ input PlayerWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  name: String
+  email: String
 
   """All values that are not equal to given value."""
-  name_not: String
+  email_not: String
 
   """All values that are contained in given list."""
-  name_in: [String!]
+  email_in: [String!]
 
   """All values that are not contained in given list."""
-  name_not_in: [String!]
+  email_not_in: [String!]
 
   """All values less than the given value."""
-  name_lt: String
+  email_lt: String
 
   """All values less than or equal the given value."""
-  name_lte: String
+  email_lte: String
 
   """All values greater than the given value."""
-  name_gt: String
+  email_gt: String
 
   """All values greater than or equal the given value."""
-  name_gte: String
+  email_gte: String
 
   """All values containing the given string."""
-  name_contains: String
+  email_contains: String
 
   """All values not containing the given string."""
-  name_not_contains: String
+  email_not_contains: String
 
   """All values starting with the given string."""
-  name_starts_with: String
+  email_starts_with: String
 
   """All values not starting with the given string."""
-  name_not_starts_with: String
+  email_not_starts_with: String
 
   """All values ending with the given string."""
-  name_ends_with: String
+  email_ends_with: String
 
   """All values not ending with the given string."""
-  name_not_ends_with: String
+  email_not_ends_with: String
+  facebookId: String
+
+  """All values that are not equal to given value."""
+  facebookId_not: String
+
+  """All values that are contained in given list."""
+  facebookId_in: [String!]
+
+  """All values that are not contained in given list."""
+  facebookId_not_in: [String!]
+
+  """All values less than the given value."""
+  facebookId_lt: String
+
+  """All values less than or equal the given value."""
+  facebookId_lte: String
+
+  """All values greater than the given value."""
+  facebookId_gt: String
+
+  """All values greater than or equal the given value."""
+  facebookId_gte: String
+
+  """All values containing the given string."""
+  facebookId_contains: String
+
+  """All values not containing the given string."""
+  facebookId_not_contains: String
+
+  """All values starting with the given string."""
+  facebookId_starts_with: String
+
+  """All values not starting with the given string."""
+  facebookId_not_starts_with: String
+
+  """All values ending with the given string."""
+  facebookId_ends_with: String
+
+  """All values not ending with the given string."""
+  facebookId_not_ends_with: String
+  firstName: String
+
+  """All values that are not equal to given value."""
+  firstName_not: String
+
+  """All values that are contained in given list."""
+  firstName_in: [String!]
+
+  """All values that are not contained in given list."""
+  firstName_not_in: [String!]
+
+  """All values less than the given value."""
+  firstName_lt: String
+
+  """All values less than or equal the given value."""
+  firstName_lte: String
+
+  """All values greater than the given value."""
+  firstName_gt: String
+
+  """All values greater than or equal the given value."""
+  firstName_gte: String
+
+  """All values containing the given string."""
+  firstName_contains: String
+
+  """All values not containing the given string."""
+  firstName_not_contains: String
+
+  """All values starting with the given string."""
+  firstName_starts_with: String
+
+  """All values not starting with the given string."""
+  firstName_not_starts_with: String
+
+  """All values ending with the given string."""
+  firstName_ends_with: String
+
+  """All values not ending with the given string."""
+  firstName_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
 }
 
 input PlayerWhereUniqueInput {
   id: ID
+  email: String
+  facebookId: String
 }
 
 type Query {
