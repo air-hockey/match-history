@@ -10,7 +10,8 @@
   "license": "MIT",
   "scripts": {
     "db": "cd server/database && docker-compose up",
-    "prisma:deploy": "cd server/database && prisma deploy",
+    "prisma:deploy": "prisma deploy && yarn run prisma:generate",
+    "prisma:generate": "graphql get-schema --project prisma",
     "dev": "nodemon -x ts-node -e ts,graphql server",
     "dev:mock": "MOCKS=true nodemon -x ts-node -e ts,graphql server",
     "debug": "nodemon -x 'ts-node --inspect' -e ts,graphql server",
@@ -24,8 +25,10 @@
   "dependencies": {
     "apollo-boost": "^0.1.6",
     "compression": "^1.7.2",
+    "cookie-session": "^2.0.0-beta.3",
     "graphql-tag": "^2.9.2",
     "graphql-yoga": "^1.13.1",
+    "hoist-non-react-statics": "^2.5.0",
     "isomorphic-unfetch": "^2.0.0",
     "jsonwebtoken": "^8.2.2",
     "next": "^6.0.3",
