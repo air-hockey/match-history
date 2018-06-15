@@ -1,7 +1,8 @@
 import App, { Container } from 'next/app'
 import React from 'react'
-import withApolloClient from '../lib/with-apollo-client'
 import { ApolloProvider } from 'react-apollo'
+import AuthProvider from '../lib/auth-provider'
+import withApolloClient from '../lib/with-apollo-client'
 
 class MyApp extends App {
   render() {
@@ -9,7 +10,9 @@ class MyApp extends App {
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
         </ApolloProvider>
       </Container>
     )
