@@ -14,6 +14,8 @@ fs.readFile(SECRETS_PATH, 'utf-8', (err, data = '{}') => {
   const secrets = {
     '@prisma-secret': generateToken(),
     '@jwt-secret': generateToken(),
+    '@cookie-secret': generateToken(),
+    '@facebook-app-id': '<FACEBOOK_APP_ID>',
     ...JSON.parse(data)
   }
 
