@@ -1,5 +1,6 @@
 import 'now-env'
 import * as next from 'next'
+import * as cookieSession from 'cookie-session'
 import * as compression from 'compression'
 
 import { server } from './src'
@@ -10,7 +11,8 @@ const {
   SERVER_ENDPOINT,
   GRAPHQL_ENDPOINT,
   SUBSCRIPTIONS_ENDPOINT,
-  PLAYGROUND_ENDPOINT
+  PLAYGROUND_ENDPOINT,
+  COOKIE_SECRET
 } = process.env
 
 // These routes will not be handled by Next.js
@@ -25,8 +27,22 @@ const handle = app.getRequestHandler() // the Next.js handler
 
 app.prepare().then(() => {
   server.express.use(compression())
+  server.express.use(
+    cookieSession({
+      name: 'session',
+      secret: COOKIE_SECRET,
+      sameSite: true,
+      maxAge: 24 * 60 * 60 * 1000
+    })
+  )
+  // Update a value in the cookie so that the set-cookie will be sent.
+  // Only changes every minute so that it's not sent with every request.
+  server.express.use((req: any, res, next) => {
+    req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
+    next()
+  })
 
-  server.express.get('*', (req, res, next) => {
+  server.express.get('*', (req: any, res, next) => {
     if (
       req.path.match(
         new RegExp(
@@ -45,6 +61,10 @@ app.prepare().then(() => {
   server.start(
     {
       port: parseInt(PORT, 10) || 3000,
+      cors: {
+        origin: `${SERVER_ENDPOINT}:${PORT}`,
+        credentials: true
+      },
       endpoint: GRAPHQL_ENDPOINT,
       subscriptions: SUBSCRIPTIONS_ENDPOINT,
       playground: PLAYGROUND_ENDPOINT
