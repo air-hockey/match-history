@@ -13,13 +13,6 @@
     ```bash
     yarn
     ```
-4.  Create a `now-secrets.json` file in the root directory with the following keys:
-    ```json
-    {
-      "@prisma-secret": "supersecret",
-      "@jwt-secret": "brandon-is-actually-worse-at-air-hockey-than-mark"
-    }
-    ```
 
 ### First time setup
 
@@ -82,6 +75,10 @@ or
 ```bash
 yarn run debug:mock
 ```
+
+## Authentication
+
+Authentication is provided by Facebook Login. To set up, you'll need to add a Facebook App ID to `now-secrets.json` as `@facebook-app-id`.
 
 ## Mocking data
 
