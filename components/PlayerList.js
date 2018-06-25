@@ -1,7 +1,8 @@
 import { graphql } from 'react-apollo'
+import { Table, TableCell } from 'semantic-ui-react'
 import gql from 'graphql-tag'
 
-const PLAYERS_PER_PAGE = 10
+const PLAYERS_PER_PAGE = 50
 
 function PlayerList({
   data: { loading, error, allPlayers, _allPlayersMeta },
@@ -11,66 +12,38 @@ function PlayerList({
   if (allPlayers && allPlayers.length) {
     const areMorePlayers = allPlayers.length < _allPlayersMeta.count
     return (
-      <section>
-        <ul>
+      <Table celled inverted selectable>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Rank</Table.HeaderCell>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Record</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
           {allPlayers.map((player, index) => (
-            <li key={player.id}>
-              <div>
-                <span>{index + 1}. </span>
-                <div id={player.id}>
-                  {player.firstName} {player.lastName}
-                </div>
-              </div>
-            </li>
+            <Table.Row key={index + 1}>
+              <Table.Cell>{index + 1}</Table.Cell>
+              <Table.Cell>{player.name}</Table.Cell>
+              <Table.Cell>{player.wins}</Table.Cell>
+            </Table.Row>
           ))}
-        </ul>
-        {areMorePlayers ? (
-          <button onClick={() => loadMorePlayers()}>
-            {' '}
-            {loading ? 'Loading...' : 'Show More'}{' '}
-          </button>
-        ) : (
-          ''
-        )}
-        <style jsx>{`
-          section {
-            padding-bottom: 20px;
-          }
-          li {
-            display: block;
-            margin-bottom: 10px;
-          }
-          div {
-            align-items: center;
-            display: flex;
-          }
-          a {
-            font-size: 14px;
-            margin-right: 10px;
-            text-decoration: none;
-            padding-bottom: 0;
-            border: 0;
-          }
-          span {
-            font-size: 14px;
-            margin-right: 5px;
-          }
-          ul {
-            margin: 0;
-            padding: 0;
-          }
-          button:before {
-            align-self: center;
-            border-style: solid;
-            border-width: 6px 4px 0 4px;
-            border-color: #ffffff transparent transparent transparent;
-            content: '';
-            height: 0;
-            margin-right: 5px;
-            width: 0;
-          }
-        `}</style>
-      </section>
+        </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.Cell>
+              {areMorePlayers ? (
+                <button onClick={() => loadMorePlayers()}>
+                  {' '}
+                  {loading ? 'Loading...' : 'Show More'}{' '}
+                </button>
+              ) : (
+                ''
+              )}
+            </Table.Cell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
     )
   }
   return <div>Loading</div>

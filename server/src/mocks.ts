@@ -6,7 +6,11 @@ export const mocks = {
   ID: () => cuid(),
   DateTime: () => casual.moment,
   Player: () => ({
-    name: casual.full_name
+    name: casual.full_name,
+    record: {
+      wins: casual.integer(10,100),
+      losses: casual.integer(0,80),
+    },
   }),
   AllPlayersMeta: () => ({
     count: casual.integer(10, 50)
