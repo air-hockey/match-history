@@ -4,10 +4,14 @@ import { Prisma } from 'prisma-binding'
 import { resolvers } from './resolvers'
 import { mocks } from './mocks'
 
+const { MOCKS, PRISMA_ENDPOINT, PRISMA_SECRET, NODE_ENV } = process.env
+
 export function createGraphQLServer(options = {}) {
   const server = new GraphQLServer({
-    typeDefs: 'server/src/schema.graphql',
-    mocks: process.env.MOCKS && mocks,
+    typeDefs: MOCKS
+      ? 'server/src/mocks/schema.mock.graphql'
+      : 'server/src/schema.graphql',
+    mocks: MOCKS && mocks,
     resolvers,
     resolverValidationOptions: {
       requireResolversForResolveType: false
@@ -16,9 +20,9 @@ export function createGraphQLServer(options = {}) {
       ...req,
       db: new Prisma({
         typeDefs: 'server/src/generated/prisma.graphql',
-        endpoint: process.env.PRISMA_ENDPOINT,
-        secret: process.env.PRISMA_SECRET,
-        debug: process.env.NODE_ENV === 'development'
+        endpoint: PRISMA_ENDPOINT,
+        secret: PRISMA_SECRET,
+        debug: NODE_ENV !== 'production'
       })
     })
   })

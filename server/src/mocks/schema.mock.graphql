@@ -1,0 +1,14 @@
+# import Match from '../generated/prisma.graphql'
+# import Query from '../schema.graphql'
+# import Mutation from '../schema.graphql'
+# import AllPlayersMeta from '../schema.graphql'
+
+type Player {
+  id: ID!
+  email: String!
+  facebookId: String!
+  firstName: String!
+  lastName: String!
+  wins: Int!
+  losses: Int!
+}
