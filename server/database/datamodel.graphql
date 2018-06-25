@@ -1,6 +1,9 @@
 type Player {
   id: ID! @unique
-  name: String!
+  email: String! @unique
+  facebookId: String! @unique
+  firstName: String!
+  lastName: String!
 }
 
 type Match {

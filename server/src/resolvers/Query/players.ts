@@ -1,6 +1,19 @@
-import { Context } from '../../utils'
+import * as jwt from 'jsonwebtoken'
+import { Context, AuthError } from '../../utils'
 
 export default {
+  async me(_, args, ctx: Context, info) {
+    const { token } = ctx.request.session
+    if (token) {
+      const { playerId } = jwt.verify(token, process.env.JWT_SECRET!) as {
+        playerId: string
+      }
+
+      return ctx.db.query.player({ where: { id: playerId } }, info)
+    }
+
+    throw new AuthError()
+  },
   async player(_, { id }, ctx: Context, info) {
     return await ctx.db.query.player({ where: { id } }, info)
   },

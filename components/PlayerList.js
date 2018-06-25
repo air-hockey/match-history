@@ -17,7 +17,9 @@ function PlayerList({
             <li key={player.id}>
               <div>
                 <span>{index + 1}. </span>
-                <div id={player.id}>{player.name}</div>
+                <div id={player.id}>
+                  {player.firstName} {player.lastName}
+                </div>
               </div>
             </li>
           ))}
@@ -78,7 +80,8 @@ export const allPlayers = gql`
   query allPlayers($first: Int!, $skip: Int!) {
     allPlayers(first: $first, skip: $skip) {
       id
-      name
+      firstName
+      lastName
     }
     _allPlayersMeta {
       count

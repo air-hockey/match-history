@@ -2,9 +2,13 @@
   "PRISMA_ENDPOINT": "http://localhost:4466",
   "SERVER_ENDPOINT": "http://localhost",
   "PORT": 3000,
+  "API_ROUTE": "/api",
   "GRAPHQL_ENDPOINT": "/graphql",
   "SUBSCRIPTIONS_ENDPOINT": "/subscriptions",
   "PLAYGROUND_ENDPOINT": "/playground",
   "PRISMA_SECRET": "@prisma-secret",
-  "JWT_SECRET": "@jwt-secret"
+  "JWT_SECRET": "@jwt-secret",
+  "COOKIE_SECRET": "@cookie-secret",
+  "FACEBOOK_API_VERSION": "v3.0",
+  "FACEBOOK_APP_ID": "@facebook-app-id"
 }
