@@ -22,16 +22,12 @@ function PlayerList({
         </Table.Header>
         <Table.Body>
           {allPlayers.map((player, index) => (
-            <Table.Row key={index + 1}>
+            <Table.Row>
               <Table.Cell>{index + 1}</Table.Cell>
               <Table.Cell>{player.name}</Table.Cell>
-              <Table.Cell>{player.wins}</Table.Cell>
+              <Table.Cell>{player.record.wins}</Table.Cell>
             </Table.Row>
-<<<<<<< refs/remotes/origin/master
           ))}
-=======
-          ))} 
->>>>>>> WiP reworking PlayerList with semantic-ui
         </Table.Body>
         <Table.Footer>
           <Table.Row>
