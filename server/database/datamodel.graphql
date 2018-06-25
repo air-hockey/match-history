@@ -4,8 +4,8 @@ type Player {
   facebookId: String! @unique
   firstName: String!
   lastName: String!
-  wins: Int!
-  losses: Int!
+  wins: Int @default(value: "0")
+  losses: Int @default(value: "0")
 }
 
 type Match {

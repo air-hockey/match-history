@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Sun Jun 24 2018 22:39:27 GMT-0500 (CDT)
+# timestamp: Sun Jun 24 2018 23:18:23 GMT-0500 (CDT)
 
 type AggregateMatch {
   count: Int!
@@ -261,8 +261,8 @@ input PlayerCreateInput {
   facebookId: String!
   firstName: String!
   lastName: String!
-  wins: Int!
-  losses: Int!
+  wins: Int
+  losses: Int
 }
 
 input PlayerCreateOneInput {
