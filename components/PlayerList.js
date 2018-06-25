@@ -27,7 +27,11 @@ function PlayerList({
               <Table.Cell>{player.name}</Table.Cell>
               <Table.Cell>{player.wins}</Table.Cell>
             </Table.Row>
+<<<<<<< refs/remotes/origin/master
           ))}
+=======
+          ))} 
+>>>>>>> WiP reworking PlayerList with semantic-ui
         </Table.Body>
         <Table.Footer>
           <Table.Row>
