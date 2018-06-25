@@ -4,6 +4,8 @@ type Player {
   facebookId: String! @unique
   firstName: String!
   lastName: String!
+  wins: Int!
+  losses: Int!
 }
 
 type Match {

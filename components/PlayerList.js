@@ -21,20 +21,23 @@ function PlayerList({
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {allPlayers.map((player, index) => 
-            <Table.Row>
+          {allPlayers.map((player, index) => (
+            <Table.Row key={player.id}>
               <Table.Cell>{index + 1}</Table.Cell>
-              <Table.Cell>{player.name}</Table.Cell>
-              <Table.Cell>{player.record.wins}</Table.Cell>
+              <Table.Cell>
+                {player.firstName} {player.lastName}
+              </Table.Cell>
+              <Table.Cell>
+                {player.wins} - {player.losses}
+              </Table.Cell>
             </Table.Row>
-          )}
+          ))}
         </Table.Body>
         <Table.Footer>
           <Table.Row>
             <Table.Cell>
               {areMorePlayers ? (
                 <button onClick={() => loadMorePlayers()}>
-     
                   {loading ? 'Loading...' : 'Show More'}{' '}
                 </button>
               ) : (
@@ -44,8 +47,8 @@ function PlayerList({
           </Table.Row>
         </Table.Footer>
       </Table>
-    );
-  };
+    )
+  }
   return <div>Loading</div>
 }
 
@@ -55,6 +58,8 @@ export const allPlayers = gql`
       id
       firstName
       lastName
+      wins
+      losses
     }
     _allPlayersMeta {
       count
