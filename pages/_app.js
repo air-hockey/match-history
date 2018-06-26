@@ -5,6 +5,8 @@ import Head from 'next/head'
 import AuthProvider from '../lib/auth-provider'
 import withApolloClient from '../lib/with-apollo-client'
 
+import '../styles/src/semantic.less'
+
 class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient } = this.props
@@ -12,10 +14,7 @@ class MyApp extends App {
       <Container>
         <Head>
           <title>United States Airhockey Association</title>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"
-          />
+          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <ApolloProvider client={apolloClient}>
           <AuthProvider>
