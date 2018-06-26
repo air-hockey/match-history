@@ -1,5 +1,5 @@
 import matchQueries from './Query/matches'
-import playerQueries, { allPlayersCount } from './Query/players'
+import playerQueries, { AllPlayersMeta, Player } from './Query/players'
 import auth from './Mutation/auth'
 import matchMutations from './Mutation/matches'
 import playerMutations from './Mutation/players'
@@ -14,5 +14,6 @@ export const resolvers = {
     ...matchMutations,
     ...playerMutations
   },
-  AllPlayersMeta: { count: allPlayersCount }
+  Player,
+  AllPlayersMeta
 }

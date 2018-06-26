@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Sun Jun 24 2018 23:18:23 GMT-0500 (CDT)
+# timestamp: Mon Jun 25 2018 21:55:00 GMT-0500 (CDT)
 
 type AggregateMatch {
   count: Int!
@@ -242,8 +242,6 @@ type Player implements Node {
   facebookId: String!
   firstName: String!
   lastName: String!
-  wins: Int!
-  losses: Int!
 }
 
 """A connection to a list of items."""
@@ -261,8 +259,6 @@ input PlayerCreateInput {
   facebookId: String!
   firstName: String!
   lastName: String!
-  wins: Int
-  losses: Int
 }
 
 input PlayerCreateOneInput {
@@ -290,10 +286,6 @@ enum PlayerOrderByInput {
   firstName_DESC
   lastName_ASC
   lastName_DESC
-  wins_ASC
-  wins_DESC
-  losses_ASC
-  losses_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -306,8 +298,6 @@ type PlayerPreviousValues {
   facebookId: String!
   firstName: String!
   lastName: String!
-  wins: Int!
-  losses: Int!
 }
 
 type PlayerSubscriptionPayload {
@@ -354,8 +344,6 @@ input PlayerUpdateDataInput {
   facebookId: String
   firstName: String
   lastName: String
-  wins: Int
-  losses: Int
 }
 
 input PlayerUpdateInput {
@@ -363,8 +351,6 @@ input PlayerUpdateInput {
   facebookId: String
   firstName: String
   lastName: String
-  wins: Int
-  losses: Int
 }
 
 input PlayerUpdateOneInput {
@@ -589,50 +575,6 @@ input PlayerWhereInput {
 
   """All values not ending with the given string."""
   lastName_not_ends_with: String
-  wins: Int
-
-  """All values that are not equal to given value."""
-  wins_not: Int
-
-  """All values that are contained in given list."""
-  wins_in: [Int!]
-
-  """All values that are not contained in given list."""
-  wins_not_in: [Int!]
-
-  """All values less than the given value."""
-  wins_lt: Int
-
-  """All values less than or equal the given value."""
-  wins_lte: Int
-
-  """All values greater than the given value."""
-  wins_gt: Int
-
-  """All values greater than or equal the given value."""
-  wins_gte: Int
-  losses: Int
-
-  """All values that are not equal to given value."""
-  losses_not: Int
-
-  """All values that are contained in given list."""
-  losses_in: [Int!]
-
-  """All values that are not contained in given list."""
-  losses_not_in: [Int!]
-
-  """All values less than the given value."""
-  losses_lt: Int
-
-  """All values less than or equal the given value."""
-  losses_lte: Int
-
-  """All values greater than the given value."""
-  losses_gt: Int
-
-  """All values greater than or equal the given value."""
-  losses_gte: Int
 }
 
 input PlayerWhereUniqueInput {

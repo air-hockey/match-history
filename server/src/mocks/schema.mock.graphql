@@ -9,6 +9,7 @@ type Player {
   facebookId: String!
   firstName: String!
   lastName: String!
+  matches: [Match!]!
   wins: Int!
   losses: Int!
 }

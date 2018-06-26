@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken'
-import { Context, AuthError } from '../../utils'
+import { Context, AuthError, AGGREGATE_COUNT } from '../../utils'
 
 export default {
   async me(_, args, ctx: Context, info) {
@@ -9,7 +9,7 @@ export default {
         playerId: string
       }
 
-      return ctx.db.query.player({ where: { id: playerId } }, info)
+      return await ctx.db.query.player({ where: { id: playerId } }, info)
     }
 
     throw new AuthError()
@@ -25,11 +25,34 @@ export default {
   }
 }
 
-export const allPlayersCount = async (parent, args, ctx, info) => {
-  const aggregations = await ctx.db.query.playersConnection(
-    {},
-    ` { aggregate { count } } `
-  )
+const getMatchesCountByType = async ({ id }, ctx, type) =>
+  (await ctx.db.query.matchesConnection(
+    type && { where: { [type]: { id } } },
+    AGGREGATE_COUNT
+  )).aggregate.count
 
-  return aggregations.aggregate.count
+export const Player = {
+  async matches({ id }, args, ctx, info) {
+    return await ctx.db.query.matches(
+      { where: { OR: [{ winner: { id } }, { loser: { id } }] } },
+      info
+    )
+  },
+  async wins(parent, args, ctx) {
+    return await getMatchesCountByType(parent, ctx, 'winner')
+  },
+  async losses(parent, args, ctx) {
+    return await getMatchesCountByType(parent, ctx, 'loser')
+  }
+}
+
+export const AllPlayersMeta = {
+  count: async (parent, args, ctx) => {
+    const aggregations = await ctx.db.query.playersConnection(
+      {},
+      AGGREGATE_COUNT
+    )
+
+    return aggregations.aggregate.count
+  }
 }
