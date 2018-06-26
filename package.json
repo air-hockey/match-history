@@ -18,12 +18,14 @@
     "debug:mock": "MOCKS=true nodemon -x 'ts-node --inspect' -e ts,graphql server",
     "build": "rimraf dist && tsc && next build",
     "start": "node dist",
-    "prettier": "prettier --write \"**/*.{js,md,graphql,json}\"",
+    "prettier": "prettier --write \"**/*.{js,md,graphql,json,less}\"",
     "precommit": "precise-commits",
     "postinstall": "node scripts/create-secrets.js"
   },
   "dependencies": {
+    "@zeit/next-less": "^0.3.0",
     "apollo-boost": "^0.1.6",
+    "autoprefixer": "^8.6.3",
     "compression": "^1.7.2",
     "cookie-session": "^2.0.0-beta.3",
     "graphql-tag": "^2.9.2",
@@ -33,6 +35,8 @@
     "jsonwebtoken": "^8.2.2",
     "next": "^6.0.3",
     "now-env": "^3.0.4",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-url": "^7.3.2",
     "prisma": "^1.9.0",
     "prisma-binding": "^2.0.2",
     "prop-types": "^15.6.1",
@@ -44,11 +48,13 @@
   "devDependencies": {
     "casual": "^1.5.19",
     "cuid": "^2.1.1",
+    "gulp": "^3.9.1",
     "husky": "^0.14.3",
     "nodemon": "^1.17.5",
     "precise-commits": "^1.0.2",
     "prettier": "1.12.1",
     "rimraf": "^2.6.2",
+    "semantic-ui": "^2.3.2",
     "ts-node": "^6.1.0",
     "typescript": "^2.9.1"
   },
