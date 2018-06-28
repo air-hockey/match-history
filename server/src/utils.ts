@@ -1,6 +1,8 @@
 import * as jwt from 'jsonwebtoken'
 import { Prisma } from 'prisma-binding'
 
+export const AGGREGATE_COUNT = ` { aggregate { count } } `
+
 export interface Context {
   db: Prisma
   request: any

@@ -1,6 +1,7 @@
 const webpack = require('webpack')
+const withLess = require('@zeit/next-less')
 
-module.exports = {
+module.exports = withLess({
   webpack(config) {
     config.plugins.push(
       new webpack.EnvironmentPlugin([
@@ -15,4 +16,4 @@ module.exports = {
 
     return config
   }
-}
+})
