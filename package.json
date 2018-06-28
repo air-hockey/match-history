@@ -46,6 +46,7 @@
     "semantic-ui-react": "^0.81.1"
   },
   "devDependencies": {
+    "@types/zen-observable": "^0.8.0",
     "casual": "^1.5.19",
     "cuid": "^2.1.1",
     "gulp": "^3.9.1",
