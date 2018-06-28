@@ -41,6 +41,7 @@
     "react-dom": "^16.3.2"
   },
   "devDependencies": {
+    "@types/zen-observable": "^0.8.0",
     "casual": "^1.5.19",
     "cuid": "^2.1.1",
     "husky": "^0.14.3",
